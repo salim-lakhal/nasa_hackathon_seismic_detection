@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Résultat de la Détection de Séisme</title>
+
+    <!-- Importation de Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles CSS -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: url("{{ url_for('static', filename='image.png') }}")
+          no-repeat center center fixed; /* Image d'arrière-plan */
+        background-size: cover; /* Couvre tout l'écran */
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        color: #4caf50;
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 15px;
+      }
+
+      p {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .container {
+        background: rgba(255, 255, 255, 0.9); /* Légèrement transparent */
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        width: 100%;
+        transition: transform 0.3s ease;
+      }
+
+      footer {
+        margin-top: 20px;
+        font-size: 0.9rem;
+        color: #888;
+      }
+
+      a {
+        color: #008cba;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .detected-image {
+        max-width: 100%; /* Ajuste l'image pour qu'elle soit responsive */
+        height: auto; /* Préserve le ratio d'aspect de l'image */
+        margin-bottom: 20px; /* Ajoute un peu d'espace en bas */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Résultat de Détection</h1>
+
+      <!-- Image de résultat -->
+      <img
+        src="{{ url_for('uploaded_file', filename=image_path) }}"
+        alt="Image de résultat"
+        class="detected-image"
+      />
+
+      <p>Résultat : <strong>{{ label }}</strong></p>
+
+      <a href="/" class="btn">Retour à l'accueil</a>
+
+      <footer>
+        <p>Projet Séisme Détection &copy; 2024</p>
+      </footer>
+    </div>
+  </body>
+</html>
