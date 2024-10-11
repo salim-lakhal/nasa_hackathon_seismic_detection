@@ -1,3 +1,6 @@
-data/
-/mon_env/
+# Ignorer tous les fichiers .h5
 *.h5
+
+# Si nécessaire, ajouter d'autres dossiers ou fichiers à ignorer
+/data/
+/mon_env/
