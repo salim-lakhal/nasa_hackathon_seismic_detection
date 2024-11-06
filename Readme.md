@@ -1,4 +1,4 @@
-�Seismic Detection across the Solar System�.
+# Seismic Detection across the Solar System.
 
 Parsing through seismic data collected on the Moon and Mars and figure out how to detect moonquakes and marsquakes!
 Training set containing the following:
@@ -20,3 +20,5 @@ You can download the datasets here : https://www.spaceappschallenge.org/nasa-spa
 Please make sure that your output catalog has at least the following headers:
 filename
 time_abs(%Y-%m-%dT%H:%M:%S.%f) or time_rel(sec)
+
+https://www.linkedin.com/feed/update/urn:li:activity:7253102571555291136/
