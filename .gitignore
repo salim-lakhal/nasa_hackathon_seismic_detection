@@ -109,3 +109,6 @@ htmlcov/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+node_modules/
+package.json
+package-lock.json
