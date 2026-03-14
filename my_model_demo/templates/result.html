@@ -1,108 +1,119 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Résultat de la Détection de Séisme</title>
-
-    <!-- Importation de Google Fonts -->
+    <title>Detection Result</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Styles CSS -->
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
+      * { margin: 0; padding: 0; box-sizing: border-box; }
       body {
         font-family: "Poppins", sans-serif;
-        background: url("{{ url_for('static', filename='image.png') }}")
-          no-repeat center center fixed; /* Image d'arrière-plan */
-        background-size: cover; /* Couvre tout l'écran */
-        color: #333;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        color: #e0e0e0;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        text-align: center;
+        min-height: 100vh;
+        padding: 20px;
       }
-
-      h1 {
-        font-size: 2.5rem;
-        color: #4caf50;
-        text-align: center;
-        margin-bottom: 20px;
-        font-weight: 600;
-      }
-
-      h2 {
-        font-size: 1.5rem;
-        color: #333;
-        margin-bottom: 15px;
-      }
-
-      p {
-        font-size: 1.2rem;
-        color: #555;
-        margin-bottom: 20px;
-        text-align: center;
-      }
-
       .container {
-        background: rgba(255, 255, 255, 0.9); /* Légèrement transparent */
+        background: rgba(30, 30, 60, 0.95);
         padding: 40px;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border-radius: 16px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
         max-width: 600px;
         width: 100%;
-        transition: transform 0.3s ease;
+        border: 1px solid rgba(100, 100, 200, 0.2);
       }
-
-      footer {
-        margin-top: 20px;
-        font-size: 0.9rem;
-        color: #888;
+      h1 {
+        font-size: 2rem;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 25px;
+        font-weight: 600;
+        text-align: center;
       }
-
-      a {
-        color: #008cba;
-        text-decoration: none;
-        font-weight: bold;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
-
       .detected-image {
-        max-width: 100%; /* Ajuste l'image pour qu'elle soit responsive */
-        height: auto; /* Préserve le ratio d'aspect de l'image */
-        margin-bottom: 20px; /* Ajoute un peu d'espace en bas */
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        border: 2px solid rgba(100, 100, 200, 0.2);
+      }
+      .result-box {
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .result-box.seismic {
+        background: rgba(220, 53, 69, 0.15);
+        border: 1px solid rgba(220, 53, 69, 0.4);
+      }
+      .result-box.safe {
+        background: rgba(40, 167, 69, 0.15);
+        border: 1px solid rgba(40, 167, 69, 0.4);
+      }
+      .result-label {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      .result-box.seismic .result-label { color: #ff6b6b; }
+      .result-box.safe .result-label { color: #51cf66; }
+      .confidence {
+        font-size: 0.95rem;
+        color: #aaa;
+      }
+      .back-link {
+        display: inline-block;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .back-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+      }
+      .center { text-align: center; }
+      footer {
+        margin-top: 25px;
+        font-size: 0.8rem;
+        color: #555;
+        text-align: center;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>Résultat de Détection</h1>
+      <h1>Detection Result</h1>
 
-      <!-- Image de résultat -->
       <img
         src="{{ url_for('uploaded_file', filename=image_path) }}"
-        alt="Image de résultat"
+        alt="Uploaded spectrogram"
         class="detected-image"
       />
 
-      <p>Résultat : <strong>{{ label }}</strong></p>
+      <div class="result-box {{ 'seismic' if is_seismic else 'safe' }}">
+        <p class="result-label">{{ label }}</p>
+        <p class="confidence">Confidence: {{ confidence }}</p>
+      </div>
 
-      <a href="/" class="btn">Retour à l'accueil</a>
+      <div class="center">
+        <a href="/" class="back-link">Analyze Another</a>
+      </div>
 
       <footer>
-        <p>Projet Séisme Détection &copy; 2024</p>
+        <p>Seismic Detection &copy; 2024 &mdash; NASA Space Apps Challenge</p>
       </footer>
     </div>
   </body>
