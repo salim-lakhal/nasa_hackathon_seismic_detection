@@ -112,3 +112,4 @@ dmypy.json
 node_modules/
 package.json
 package-lock.json
+assets/demo.mp4
