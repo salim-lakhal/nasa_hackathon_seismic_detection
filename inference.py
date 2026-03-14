@@ -6,7 +6,6 @@ Load trained model and make predictions on new spectrograms.
 import torch
 from torchvision import transforms
 import cv2
-import numpy as np
 import argparse
 from pathlib import Path
 import json

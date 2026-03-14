@@ -6,14 +6,13 @@ Includes proper metrics, checkpointing, early stopping, and visualization.
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torch.optim.lr_scheduler import ReduceLROnPlateau, CosineAnnealingLR
+from torch.optim.lr_scheduler import ReduceLROnPlateau
 from torch.cuda.amp import autocast, GradScaler
 import numpy as np
 from pathlib import Path
 import json
 import logging
 from tqdm import tqdm
-from datetime import datetime
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
 

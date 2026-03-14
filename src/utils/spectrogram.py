@@ -123,9 +123,9 @@ class SpectrogramGenerator:
             f, t, sxx = signal.spectrogram(tr_data_filt, sampling_rate)
 
             # Create figure without axes for clean ML input
-            fig = plt.figure(figsize=(10, 6))
+            plt.figure(figsize=(10, 6))
             ax = plt.subplot(1, 1, 1)
-            vals = ax.pcolormesh(t, f, sxx, cmap=cm.jet, vmax=5e-17)
+            ax.pcolormesh(t, f, sxx, cmap=cm.jet, vmax=5e-17)
             ax.set_xlim([t.min(), t.max()])
             ax.set_axis_off()
 

@@ -4,7 +4,6 @@ Production-ready ML pipeline with proper logging, checkpointing, and reproducibi
 """
 
 import torch
-import torch.nn as nn
 from torchvision import transforms
 import numpy as np
 import random
@@ -182,7 +181,7 @@ def main(args):
         with open(Path(args.log_dir) / 'final_metrics.json', 'w') as f:
             json.dump(final_metrics, f, indent=2)
 
-    logger.info(f"\nAll outputs saved to:")
+    logger.info("\nAll outputs saved to:")
     logger.info(f"  Checkpoints: {args.checkpoint_dir}")
     logger.info(f"  Logs/Visualizations: {args.log_dir}")
 

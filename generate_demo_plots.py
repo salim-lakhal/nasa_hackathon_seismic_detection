@@ -4,19 +4,18 @@ Generate realistic training visualizations for demonstration purposes.
 These plots simulate what a trained model would produce.
 """
 
+import json
+import os
+
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import confusion_matrix, roc_curve, auc, precision_recall_curve
-import json
 
-# Set style
 sns.set_style("whitegrid")
 plt.rcParams['figure.figsize'] = (10, 6)
 plt.rcParams['font.size'] = 10
 
-# Create assets directory
-import os
 os.makedirs('assets', exist_ok=True)
 
 # Simulate training history (50 epochs)

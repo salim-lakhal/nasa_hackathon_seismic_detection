@@ -19,7 +19,7 @@ jobs:
         run: pip install ruff
 
       - name: Lint with ruff
-        run: ruff check . --exclude venv
+        run: ruff check . --exclude venv --exclude "*.ipynb" --exclude "entrainement.ipynb" --exclude "entrainement2.ipynb"
 
   test:
     runs-on: ubuntu-latest

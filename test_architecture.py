@@ -14,10 +14,10 @@ print("="*80)
 # Test 1: Import all modules
 print("\n[1/6] Testing imports...")
 try:
-    from src.data import SeismicSpectrogramDataset, create_dataloaders
-    from src.models import create_model, ResNet18Seismic, SeismicCNN
-    from src.training import SeismicTrainer, ModelEvaluator
-    from src.utils import SpectrogramGenerator
+    from src.data import SeismicSpectrogramDataset, create_dataloaders  # noqa: F401
+    from src.models import create_model, ResNet18Seismic, SeismicCNN  # noqa: F401
+    from src.training import SeismicTrainer, ModelEvaluator  # noqa: F401
+    from src.utils import SpectrogramGenerator  # noqa: F401
     print("✓ All modules imported successfully")
 except ImportError as e:
     print(f"✗ Import failed: {e}")
@@ -63,15 +63,15 @@ print("\n[4/6] Testing model architectures...")
 try:
     # Test ResNet18
     model_resnet = create_model('resnet18', num_classes=1, pretrained=False)
-    print(f"✓ ResNet18 created")
+    print("✓ ResNet18 created")
 
     # Test Custom CNN
     model_custom = create_model('custom_cnn', num_classes=1)
-    print(f"✓ Custom CNN created")
+    print("✓ Custom CNN created")
 
     # Test Efficient CNN
     model_efficient = create_model('efficient_cnn', num_classes=1)
-    print(f"✓ Efficient CNN created")
+    print("✓ Efficient CNN created")
 
     # Test forward pass
     import torch
@@ -113,7 +113,7 @@ try:
 
     # Test one batch
     images, labels = next(iter(test_loader))
-    print(f"✓ DataLoader working")
+    print("✓ DataLoader working")
     print(f"  - Batch shape: {images.shape}")
     print(f"  - Labels: {labels}")
 
@@ -131,7 +131,7 @@ try:
         predictions = model_resnet(images)
         probabilities = torch.sigmoid(predictions)
 
-    print(f"✓ Inference successful")
+    print("✓ Inference successful")
     print(f"  - Predictions shape: {predictions.shape}")
     print(f"  - Sample probabilities: {probabilities.squeeze()[:3]}")
 
