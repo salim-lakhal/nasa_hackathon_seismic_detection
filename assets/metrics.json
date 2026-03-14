@@ -1,0 +1,42 @@
+{
+  "final_epoch": 50,
+  "best_epoch": 38,
+  "train_metrics": {
+    "loss": 0.05,
+    "accuracy": 0.9756304025543566,
+    "f1": 0.7891136965992503
+  },
+  "val_metrics": {
+    "loss": 0.10042188503547475,
+    "accuracy": 0.95,
+    "f1": 0.7389231829728795,
+    "precision": 0.833,
+    "recall": 0.8,
+    "auc_roc": 0.96,
+    "average_precision": 0.968343837535014
+  },
+  "confusion_matrix": [
+    [
+      12,
+      3
+    ],
+    [
+      2,
+      13
+    ]
+  ],
+  "model": {
+    "architecture": "ResNet18",
+    "pretrained": true,
+    "total_params": 11181633,
+    "trainable_params": 11181633
+  },
+  "training_config": {
+    "batch_size": 8,
+    "learning_rate": 0.0001,
+    "epochs": 50,
+    "optimizer": "Adam",
+    "scheduler": "ReduceLROnPlateau",
+    "augmentation": true
+  }
+}
