@@ -114,3 +114,5 @@ package.json
 package-lock.json
 assets/demo.mp4
 *.cast
+
+.claude
